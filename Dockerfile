@@ -22,7 +22,7 @@ ENV APP_HOME=/usr/app/
 
 # collect the .jar file from the temporary environment
 WORKDIR $APP_HOME
-COPY --from=TEMP_BUILD_IMAGE $APP_HOME/build/libs/$ARTIFACT_NAME
+COPY --from=TEMP_BUILD_IMAGE $APP_HOME/build/libs/$ARTIFACT_NAME .
 
 # run the application
 EXPOSE 8080
