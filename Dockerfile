@@ -17,7 +17,7 @@ RUN gradle build clean
 
 # actual container for application image
 FROM adoptopenjdk/openjdk11:alpine-jre
-ENV ARTIFACT_NAME=
+ENV ARTIFACT_NAME=RecipeScrape-0.0.1-SNAPSHOT.jar
 ENV APP_HOME=/usr/app/
 
 # collect the .jar file from the temporary environment
