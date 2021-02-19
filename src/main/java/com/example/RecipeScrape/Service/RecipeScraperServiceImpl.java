@@ -1,5 +1,8 @@
-package com.example.RecipeScrape;
+package com.example.RecipeScrape.Service;
 
+import com.example.RecipeScrape.Model.Recipe;
+import com.example.RecipeScrape.Service.RecipeScraperService;
+import com.example.RecipeScrape.Util.RecipeScraper;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;

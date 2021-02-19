@@ -1,5 +1,6 @@
-package com.example.RecipeScrape;
+package com.example.RecipeScrape.Util;
 
+import com.example.RecipeScrape.Model.Recipe;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.FormElement;
@@ -24,7 +25,7 @@ public class RecipeScraper {
 
     }
 
-    RecipeScraper(Document currentPage) {
+    public RecipeScraper(Document currentPage) {
         this.currentPage = currentPage;
         ingredientList = new ArrayList<>();
         instructionList = new ArrayList<>();

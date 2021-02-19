@@ -1,6 +1,8 @@
-package com.example.RecipeScrape;
+package com.example.RecipeScrape.Controller;
 
 
+import com.example.RecipeScrape.Model.Recipe;
+import com.example.RecipeScrape.Service.RecipeScraperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

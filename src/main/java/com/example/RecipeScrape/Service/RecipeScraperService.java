@@ -1,4 +1,6 @@
-package com.example.RecipeScrape;
+package com.example.RecipeScrape.Service;
+
+import com.example.RecipeScrape.Model.Recipe;
 
 import java.io.IOException;
 

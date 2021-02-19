@@ -1,4 +1,4 @@
-package com.example.RecipeScrape;
+package com.example.RecipeScrape.Model;
 
 
 import java.io.Serializable;
