@@ -18,7 +18,7 @@ RUN gradle build clean
 # actual container for application image
 FROM adoptopenjdk/openjdk11:alpine-jre
 ENV ARTIFACT_NAME=build/libs/*.jar
-ENV APP_HOME=/usr/app/
+ENV APP_HOME=/
 
 # collect the .jar file from the temporary environment
 WORKDIR $APP_HOME
