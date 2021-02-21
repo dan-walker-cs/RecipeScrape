@@ -1,6 +1,6 @@
 # sets up temporary gradle environment
 FROM gradle:6.8.2-jdk11 AS TEMP_BUILD_IMAGE
-ENV APP_HOME=/usr/app/
+ENV APP_HOME=/
 WORKDIR $APP_HOME
 COPY build.gradle settings.gradle $APP_HOME
 
