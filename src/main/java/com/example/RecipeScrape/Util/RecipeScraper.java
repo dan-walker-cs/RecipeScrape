@@ -18,6 +18,7 @@ public class RecipeScraper {
 
     private Document currentPage;
 
+    private ArrayList<String> recipeMetaDataList;
     private ArrayList<String> ingredientList;
     private ArrayList<String> instructionList;
 
@@ -61,6 +62,7 @@ public class RecipeScraper {
     // sets all the fields for a recipe object
     public void buildRecipe() {
         scrapeTitle();
+        scrapeRecipeMetaData();
         scrapePrepTime();
         scrapeCookTime();
         scrapeServingCount();
@@ -79,25 +81,46 @@ public class RecipeScraper {
         recipe.setTitle(title.text());
     }
 
-    // parses the html document for the recipe's prep time
+    // collects recipe metadata to be parsed for specific fields
+    private void scrapeRecipeMetaData() {
+        recipeMetaDataList = new ArrayList<>();
+        Elements recipeMetaData = currentPage.getElementsByClass("recipe-meta-item");
+        for(Element e : recipeMetaData) {
+            recipeMetaDataList.add(e.text());
+        }
+    }
+
+    // parses the metadata for prep time
     private void scrapePrepTime() {
-        Elements recipeMetaData = currentPage.getElementsByClass("recipe-meta-item-body");
-
-        recipe.setPrepTime(recipeMetaData.get(0).text());
+        for(String str : recipeMetaDataList) {
+            if(str.contains("prep")) {
+                recipe.setPrepTime(str.substring(6));
+                recipeMetaDataList.remove(str);
+                break;
+            }
+        }
     }
 
-    // parses the html document for the recipe's cook time
+    // parses the metadata for cook time
     private void scrapeCookTime() {
-        Elements recipeMetaData = currentPage.getElementsByClass("recipe-meta-item-body");
-
-        recipe.setCookTime(recipeMetaData.get(1).text());
+        for(String str : recipeMetaDataList) {
+            if(str.contains("cook")) {
+                recipe.setCookTime(str.substring(6));
+                recipeMetaDataList.remove(str);
+                break;
+            }
+        }
     }
 
-    // parses the html document for the number of servings the recipe makes
+    // parses the metadata for number of servings recipe makes
     private void scrapeServingCount() {
-        Elements recipeMetaData = currentPage.getElementsByClass("recipe-meta-item-body");
-
-        recipe.setServingCount(recipeMetaData.get(3).text());
+        for(String str : recipeMetaDataList) {
+            if(str.contains("Servings")) {
+                recipe.setServingCount(str.substring(10));
+                recipeMetaDataList.remove(str);
+                break;
+            }
+        }
     }
 
     // parses the html document for the recipe's nutritional information, then extracts the calorie information
