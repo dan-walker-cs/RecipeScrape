@@ -28,6 +28,15 @@ springBoot {
 bootJar {
 	mainClass = 'com.example.RecipeScrape.RecipeScrapeApplication'
 }
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ["src"]
+		}
+	}
+}
+
 /*
 jar {
 	manifest {
