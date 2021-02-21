@@ -1,8 +1,7 @@
-package com.example.RecipeScrape.Service;
+package main.java.com.example.RecipeScrape.Service;
 
 import com.example.RecipeScrape.Model.Recipe;
-import com.example.RecipeScrape.Service.RecipeScraperService;
-import com.example.RecipeScrape.Util.RecipeScraper;
+import main.java.com.example.RecipeScrape.Util.RecipeScraper;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,7 @@ public class RecipeScraperServiceImpl implements RecipeScraperService {
 
     private String baseURL = "https://www.allrecipes.com/";
     private Integer parseTimeoutMillis = 10000;
-    private Recipe recipe;;
+    private Recipe recipe;
 
     public RecipeScraperServiceImpl() {
 

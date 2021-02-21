@@ -11,7 +11,7 @@ USER root
 RUN chown -R gradle /home/gradle/src
 
 # build the project with gradle
-run gradle build || return 0
+run --stacktrace gradle build || return 0
 COPY . .
 RUN gradle build clean
 

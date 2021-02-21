@@ -1,4 +1,4 @@
-package com.example.RecipeScrape.Util;
+package main.java.com.example.RecipeScrape.Util;
 
 import com.example.RecipeScrape.Model.Recipe;
 import org.jsoup.nodes.Document;

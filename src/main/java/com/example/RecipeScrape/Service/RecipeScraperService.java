@@ -1,4 +1,4 @@
-package com.example.RecipeScrape.Service;
+package main.java.com.example.RecipeScrape.Service;
 
 import com.example.RecipeScrape.Model.Recipe;
 
