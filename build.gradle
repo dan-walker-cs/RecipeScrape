@@ -20,13 +20,22 @@ dependencies {
 	implementation 'org.jsoup:jsoup:1.13.1'
 	compile 'org.jsoup:jsoup:1.13.1'
 }
+/*
+springBoot {
+	mainClass = "com.example.RecipeScrape.RecipeScrapeApplication"
+}
+*/
+bootJar {
+	mainClass = 'com.example.RecipeScrape.RecipeScrapeApplication'
+}
 
+/*
 jar {
 	manifest {
 		attributes 'Main-Class': 'com.example.RecipeScrape.RecipeScrapeApplication'
 	}
 }
-
+*/
 test {
 	useJUnitPlatform()
 }
