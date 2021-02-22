@@ -20,15 +20,14 @@ dependencies {
 	implementation 'org.jsoup:jsoup:1.13.1'
 	compile 'org.jsoup:jsoup:1.13.1'
 }
-/*
+
 springBoot {
-	mainClass = "com.example.RecipeScrape.RecipeScrapeApplication"
+	mainClass.set("com.example.RecipeScrape.RecipeScrapeApplication")
 }
-*/
+
 bootJar {
 	mainClass.set('com.example.RecipeScrape.RecipeScrapeApplication')
 }
-
 
 jar {
 	manifest {
