@@ -1,29 +1,14 @@
-# sets up temporary gradle environment
-FROM gradle:6.8.2-jdk11 AS TEMP_BUILD_IMAGE
-ENV APP_HOME=/
-WORKDIR $APP_HOME
-COPY build.gradle settings.gradle $APP_HOME
-
-# set permissions for gradle environment
-COPY gradle $APP_HOME/gradle
+FROM gradle:4.7.0-jdk8-alpine AS build
 COPY --chown=gradle:gradle . /home/gradle/src
-USER root
-RUN chown -R gradle /home/gradle/src
+WORKDIR /home/gradle/src
+RUN gradle build --no-daemon
 
-# build the project with gradle
-run gradlew --stacktrace --info build || return 0
-COPY . .
-RUN gradle build clean
+FROM openjdk:8-jre-slim
 
-# actual container for application image
-FROM adoptopenjdk/openjdk11:alpine-jre
-ENV ARTIFACT_NAME=build/libs/*.jar
-ENV APP_HOME=/
-
-# collect the .jar file from the temporary environment
-WORKDIR $APP_HOME
-COPY --from=TEMP_BUILD_IMAGE $APP_HOME/build/libs/$ARTIFACT_NAME .
-
-# run the application
 EXPOSE 8080
-ENTRYPOINT exec java -jar ${ARTIFACT_NAME}
+
+RUN mkdir /app
+
+COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-boot-application.jar
+
+ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring-boot-application.jar"]

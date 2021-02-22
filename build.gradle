@@ -24,11 +24,16 @@ dependencies {
 springBoot {
 	mainClass.set("com.example.RecipeScrape.RecipeScrapeApplication")
 }
-
+/*
 bootJar {
 	mainClass.set('com.example.RecipeScrape.RecipeScrapeApplication')
-}
+}*/
 
+bootJar {
+	manifest {
+		attributes 'Start-Class': 'com.example.ExampleApplication'
+	}
+}
 
 sourceSets {
 	main {
